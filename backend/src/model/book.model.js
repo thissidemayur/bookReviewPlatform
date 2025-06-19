@@ -7,18 +7,21 @@ const bookSchema = new Schema(
       tolower: true,
       trim: true,
       required: [true, "Title is required!"],
+      index: true,
     },
     author: {
       type: String,
       tolower: true,
       trim: true,
       required: [true, "Author is required!"],
+      index: true,
     },
     genre: {
       type: String,
       tolower: true,
       trim: true,
       required: [true, "Genre is required!"],
+      index: true,
     },
     summary: {
       type: String,
@@ -52,6 +55,9 @@ const bookSchema = new Schema(
   },
   { timestamps: true }
 );
+
+bookSchema.index({ title: 1, genre: 1 });
+bookSchema.index({ title: 1, author: 1 });
 
 const Book = model("Book", bookSchema);
 export default Book;
