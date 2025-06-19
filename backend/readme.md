@@ -58,3 +58,61 @@ backend/
 │       ├── asyncHandler.utils.js    # Async wrapper for controllers
 │       └── cloudinary.utils.js      # Image upload helper
 ```
+
+---
+
+##🛠️ Setup
+Follow these steps to run the backend server locally:
+
+###1. Clone the Repository
+
+```bash
+- using HTTPS
+https://github.com/thissidemayur/bookReviewPlatform.git
+
+-  using SSH
+git@github.com:thissidemayur/bookReviewPlatform.git
+
+- using Github CLI
+gh repo clone thissidemayur/bookReviewPlatform
+
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+
+```
+
+### 3. Create .env File
+
+```bash
+PORT=2000
+MONGODB_URI=mongodb://localhost:27017/bookreviewdb
+
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECREAT=your_api_secret
+
+ACCESS_TOKEN_SECRET=your_jwt_access_secret
+REFRESH_TOKEN_SECRET=your_jwt_refresh_secret
+ACCESS_TOKEN_EXPIRY=15m
+REFRESH_TOKEN_EXPIRY=7d
+
+BCRYPT_SALT_ROUND=10
+
+```
+
+### 4. Start the Server
+
+```bash
+npm run dev
+
+```
+
+- **If everything is set up correctly, you should see: **
+
+```bash
+⚙️ server is connected on PORT 3000
+```
