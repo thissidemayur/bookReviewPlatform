@@ -6,7 +6,7 @@ dotenv.config({ path: "./.env" }); //use to load env variable into process.env
 const MONGODB_URI = process.env.MONGODB_URI;
 
 // ----------------------- Server Configuration -----------------------
-const PORT = process.env.PORT || 2000;
+const PORT = parseInt(process.env.PORT) || 2000;
 
 // ----------------------- Cloudinary Configuration -----------------------
 const CLOUDINARY_CLOUD_NAME = process.env.CLOUDINARY_CLOUD_NAME;
@@ -21,7 +21,8 @@ const ACCESS_TOKEN_EXPIRY = process.env.ACCESS_TOKEN_EXPIRY;
 const REFRESH_TOKEN_EXPIRY = process.env.REFRESH_TOKEN_EXPIRY;
 
 // ----------------------- Bcrypt Configuration -----------------------
-const BCRYPT_SALT_ROUND = process.env.BCRYPT_SALT_ROUND;
+const BCRYPT_SALT_ROUND = parseInt(process.env.BCRYPT_SALT_ROUND);
+console.log(typeof BCRYPT_SALT_ROUND);
 
 export {
   // MongoDB

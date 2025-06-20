@@ -4,7 +4,7 @@ import {
   CLOUDINARY_API_KEY,
   CLOUDINARY_API_SECREAT,
   CLOUDINARY_CLOUD_NAME,
-} from "../config";
+} from "../config.js";
 import { ApiError } from "./apiError.utils.js";
 import fs from "fs/promises";
 // Return "https" URLs by setting secure: true
@@ -14,16 +14,13 @@ cloudinary.config({
   api_secret: CLOUDINARY_API_SECREAT,
 });
 
-// Log the configuration
-console.log(cloudinary.config());
-
 /**
  * Uploads a single image to Cloudinary and removes the local  file. present at /backend/public/temp/
  * @param {string} localFilePath - Path to the local image file.
  * @returns {Promise<object>} - Cloudinary response containing file details.
  * @throws {ApiError} - On upload or cleanup failure.
  */
-export const uploadSingleImageOnCLoudinary = async (localfilePath) => {
+export const uploadSingleImageOnCloudinary = async (localfilePath) => {
   try {
     if (!localfilePath)
       throw new ApiError(400, "No file path provided for upload.");

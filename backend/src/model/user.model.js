@@ -3,6 +3,8 @@ import {
   BCRYPT_SALT_ROUND,
   REFRESH_TOKEN_EXPIRY,
   REFRESH_TOKEN_SECRET,
+  ACCESS_TOKEN_SECRET,
+  ACCESS_TOKEN_EXPIRY,
 } from "../config.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -26,14 +28,14 @@ const userSchema = new Schema(
       trim: true,
       lowercase: true,
       unique: true,
-      sparse: true,
+      required: true,
     },
     userName: {
       type: String,
       trim: true,
       lowercase: true,
       unique: true,
-      sparse: true,
+      required: true,
     },
     emailVerified: {
       type: Boolean,
@@ -45,6 +47,14 @@ const userSchema = new Schema(
     },
     userImg: {
       type: String,
+    },
+    refreshToken: {
+      type: String,
+    },
+    userNameChangeCount: {
+      type: Number,
+      default: 0,
+      max: 2,
     },
   },
   {
