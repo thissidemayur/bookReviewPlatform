@@ -16,13 +16,19 @@ export const authUser = asyncHandler(async (req, _, next) => {
     }
 
     const decodedToken = jwt.verify(token, ACCESS_TOKEN_SECRET);
-    const user = await User.findById(decodedToken?._id).select(
-      "-password -refreshToken"
-    );
 
-    if (!user) throw new ApiError(404, "User not found");
+    const user = await User.findById(decodedToken?.data._id);
 
-    req.authUser = user;
+    const userResponse = user.toObject();
+    delete userResponse.password;
+    delete userResponse.refreshToken;
+
+    if (!user) {
+      console.error("user not found @authUser middleware:: ");
+      throw new ApiError(404, "User not found");
+    }
+
+    req.authUser = userResponse;
     next();
   } catch (error) {
     console.error("error @authUser middleware:: = ", error?.message || error);
